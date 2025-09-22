@@ -1,18 +1,254 @@
-/* Style global */
+@import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:wght@400;600;700&display=swap');
+
+/* ================================================== */
+/* RESET & BASE                                        */
+/* ================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+/* ================================================== */
+/* NAVBAR                                              */
+/* ================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f6ef;
+  padding: 0.75rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+/* Liens */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+  margin-right: 7rem;
+  font-size: 1.1rem;
+}
+
+.nav-links a {
+  font-family: 'Epunda Slab', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.2s, font-weight 0.2s;
+}
+
+.nav-links a:hover {
+  color: #00473e;
+  font-weight: 700;
+}
+
+/* Burger */
+.nav-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+/* ================================================== */
+/* MENU MOBILE FULLSCREEN                              */
+/* ================================================== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #E8F3F5, #F5F1E6);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  z-index: 2000;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-close {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: 'Epunda Slab', serif;
+}
+
+.menu-links a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #00473e;
+  font-weight: 500;
+}
+
+.menu-links a:hover {
+  font-weight: 700;
+}
+
+.menu-footer {
+  text-align: center;
+  color: #00473e;
+}
+
+/* ================================================== */
+/* FOOTER                                              */
+/* ================================================== */
+.footer {
+  background: linear-gradient(to right, #E8F3F5, #F5F1E6);
+  padding: 25px 20px;
+  font-family: Arial, sans-serif;
+  color: #2E5E4E;
+  margin: 30px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Bloc gauche : logo + socials */
+.footer-left {
+  flex: 1;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: row;   /* logo et bloc socials côte à côte */
+  align-items: center;
+  gap: 20px;
+}
+
+.footer .logo {
+  width: 120px;
+  height: auto;
+  padding: 10px 0;
+}
+
+/* Réseaux sociaux */
+.socials {
+  display: flex;
+  flex-direction: column;   /* icônes au-dessus, texte en dessous */
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.socials .icons {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.follow {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Icônes */
+.footer .socials a {
+  font-size: 20px;
+  color: #1c3b2a;
+  transition: 0.3s;
+}
+
+.footer .socials a:hover {
+  color: #2E5E4E;
+}
+
+/* Colonnes */
+.footer-right {
+  flex: 2;
+  display: flex;
+  gap: 60px;
+  justify-content: center; 
+  text-align: left;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.footer-col a {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #2E5E4E;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+/* Bas de page */
+.footer-bottom {
+  margin-top: 30px;
+  border-top: 1.5px solid #2E5E4E;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================================================== */
+/* PAGE 404                                            */
+/* ================================================== */
 .page__404 {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #777;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   color: white;
   text-align: center;
 }
 
-/* Carte */
 .card__404 {
   position: relative;
   width: 90%;
@@ -25,21 +261,18 @@
   background-size: cover;
 }
 
-/* Overlay */
 .card__overlay__404 {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.55);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   padding: 20px;
 }
 
-/* Titres et textes */
 .card__title__404 {
   font-size: 5rem;
   margin: 0 0 20px 0;
@@ -59,17 +292,15 @@
   line-height: 1.5;
 }
 
-/* Bouton */
 .card__button__404 {
   display: inline-block;
   padding: 12px 28px;
   border: 2px solid white;
-  color: white;
-  text-decoration: none;
   border-radius: 30px;
+  color: white;
   font-weight: bold;
+  text-decoration: none;
   transition: all 0.3s;
-  margin-top: 10px;
 }
 
 .card__button__404:hover {
@@ -78,33 +309,97 @@
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
-/* Footer */
 .card__footer__404 {
   margin-top: 20px;
   font-size: 0.9rem;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
-/* 📱 Responsive */
+/* ================================================== */
+/* RESPONSIVE                                          */
+/* ================================================== */
+
+/* --- NAVBAR --- */
+@media (max-width: 767px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex !important;
+    margin-right: 4rem;
+    gap: 4rem;
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* --- FOOTER --- */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-right {
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .separator {
+    border: none;
+    border-top: 1.5px solid #1c3b2a;
+    width: 80%;
+    margin: 15px auto;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .footer-bottom {
+    margin-top: 10px;
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* --- 404 --- */
 @media (max-width: 768px) {
   .card__404 {
     width: 95%;
     aspect-ratio: 3/4;
   }
-
   .card__title__404 {
     font-size: 3rem;
   }
-
   .card__subtitle__404 {
     font-size: 1rem;
   }
-
   .card__text__404 {
     font-size: 1rem;
     padding: 0 10px;
   }
-
   .card__button__404 {
     padding: 10px 20px;
     font-size: 0.9rem;
