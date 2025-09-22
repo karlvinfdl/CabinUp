@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CabinUp – Découvrez nos logements</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="accueil__hero">
+    <div class="accueil__overlay"></div>
+    <div class="accueil__content">
+      <h1 class="accueil__title">Découvrez nos logements</h1>
+
+      <!-- ===================== BARRE DE RECHERCHE ===================== -->
+      <form class="accueil__search" onsubmit="return false;">
+        <div class="accueil__seg" data-type="dest">
+          <div class="accueil__label">Destination</div>
+          <input type="text" id="dest-desktop" placeholder="Où voulez-vous aller ?" />
+        </div>
+        <div class="accueil__seg" data-type="arrival">
+          <div class="accueil__label">Arrivée</div>
+          <input type="text" id="arrival" placeholder="Date d'arrivée" readonly />
+        </div>
+        <div class="accueil__seg" data-type="departure">
+          <div class="accueil__label">Départ</div>
+          <input type="text" id="departure" placeholder="Date de départ" readonly />
+        </div>
+        <div class="accueil__seg" data-type="voyageurs">
+          <div class="accueil__label">Voyageurs</div>
+          <input type="text" id="voyageurs" placeholder="2 voyageurs" readonly />
+        </div>
+        <button type="button" id="search-btn" class="accueil__cta">Rechercher</button>
+      </form>
+
+      <!-- ===================== DROPDOWN CALENDRIER ===================== -->
+      <div id="calendar-desktop" class="accueil__calendar accueil__calendar--hidden">
+        <div class="accueil__calendar-header">
+          <p class="accueil__calendar-title">Quand ?</p>
+          <div class="accueil__toggle">
+            <button type="button" class="accueil__toggle-btn accueil__toggle-btn--active">Dates</button>
+            <button type="button" class="accueil__toggle-btn">Mois</button>
+          </div>
+        </div>
+        <div class="accueil__calendar-nav">
+          <button id="d-prev" type="button" class="accueil__nav-btn">&lt;</button>
+          <span id="d-month" class="accueil__month-name">Mois</span>
+          <span id="d-year" class="accueil__year">2025</span>
+          <button id="d-next" type="button" class="accueil__nav-btn">&gt;</button>
+        </div>
+        <div class="accueil__weekdays"></div>
+        <div id="d-grid" class="accueil__calendar-grid"></div>
+      </div>
+
+      <!-- ===================== DROPDOWN QUI ===================== -->
+      <div id="who-desktop" class="accueil__who accueil__who--hidden">
+
+        <div class="accueil__who-row" data-scope="desk" data-type="adults">
+          <span class="accueil__who-label">Adultes<br><small>18 ans et plus</small></span>
+          <div class="accueil__who-controls">
+            <button type="button" class="accueil__ctl -minus">−</button>
+            <span class="accueil__who-count">2</span>
+            <button type="button" class="accueil__ctl -plus">+</button>
+          </div>
+        </div>
+
+        <div class="accueil__who-row" data-scope="desk" data-type="children">
+          <span class="accueil__who-label">Enfants<br><small>De 2 à 17 ans</small></span>
+          <div class="accueil__who-controls">
+            <button type="button" class="accueil__ctl -minus">−</button>
+            <span class="accueil__who-count">0</span>
+            <button type="button" class="accueil__ctl -plus">+</button>
+          </div>
+        </div>
+
+        <div class="accueil__who-row" data-scope="desk" data-type="pets">
+          <span class="accueil__who-label">Animaux domestiques</span>
+          <div class="accueil__who-controls">
+            <button type="button" class="accueil__ctl -minus">−</button>
+            <span class="accueil__who-count">0</span>
+            <button type="button" class="accueil__ctl -plus">+</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- ===================== FIN QUI ===================== -->
+
+      <div class="accueil__search-subtitle">
+        <p>CabinUp est une plateforme de location d’hébergements uniques et variés partout en France.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== POPUP MOBILE ===================== -->
+  <div id="mobile-popup" class="accueil__popup" aria-hidden="true">
+    <div class="accueil__popup-content">
+      <button id="popup-close" class="accueil__popup-close" aria-label="Fermer">✕</button>
+
+      <!-- Section Où ? -->
+      <section class="accueil__popup-card">
+        <h2 class="accueil__popup-title">Où ?</h2>
+        <label class="accueil__mobile-search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79L20 21.5 21.5 20 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input id="dest-mobile" type="text" placeholder="Rechercher une destination" />
+        </label>
+      </section>
+
+      <!-- Section Quand ? -->
+      <section class="accueil__popup-card">
+        <h2 class="accueil__popup-title">Quand ?</h2>
+        <div class="accueil__segmented">
+          <button type="button" class="accueil__segmented-btn is-active">Dates</button>
+          <button type="button" class="accueil__segmented-btn">Mois</button>
+        </div>
+        <div class="accueil__mcal">
+          <div class="accueil__mcal-head">
+            <button id="m-prev" type="button" class="accueil__mnav">&lt;</button>
+            <div class="accueil__mcal-title"><span id="m-month">Mois</span> <span id="m-year">2025</span></div>
+            <button id="m-next" type="button" class="accueil__mnav">&gt;</button>
+          </div>
+          <div class="accueil__mcal-week"></div>
+          <div id="m-grid" class="accueil__mcal-grid"></div>
+        </div>
+      </section>
+
+      <!-- Section Qui ? -->
+      <section class="accueil__popup-card">
+        <h2 class="accueil__popup-title">Qui ?</h2>
+
+        <div class="accueil__row" data-scope="mob" data-type="adults">
+          <div>
+            <div class="accueil__row-title">Adultes</div>
+            <div class="accueil__row-sub">18 ans et plus</div>
+          </div>
+          <div class="accueil__row-ctrl">
+            <button class="accueil__ctl -minus">−</button>
+            <span class="accueil__num">2</span>
+            <button class="accueil__ctl -plus">+</button>
+          </div>
+        </div>
+
+        <div class="accueil__row" data-scope="mob" data-type="children">
+          <div>
+            <div class="accueil__row-title">Enfants</div>
+            <div class="accueil__row-sub">De 2 à 17 ans</div>
+          </div>
+          <div class="accueil__row-ctrl">
+            <button class="accueil__ctl -minus">−</button>
+            <span class="accueil__num">0</span>
+            <button class="accueil__ctl -plus">+</button>
+          </div>
+        </div>
+
+        <div class="accueil__row" data-scope="mob" data-type="pets">
+          <div>
+            <div class="accueil__row-title">Animaux domestiques</div>
+          </div>
+          <div class="accueil__row-ctrl">
+            <button class="accueil__ctl -minus">−</button>
+            <span class="accueil__num">0</span>
+            <button class="accueil__ctl -plus">+</button>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <div class="accueil__popup-footer">
+      <button id="popup-clear" class="accueil__clear">Tout effacer</button>
+      <button id="popup-search" class="accueil__cta accueil__cta--big">Rechercher</button>
+    </div>
+  </div>
+
+  <script src="assets/script/script.js"></script>
+</body>
+</html>
