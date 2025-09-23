@@ -174,48 +174,62 @@
     </div>
   </div>
 
-  <!-- Slogan --> 
+ <!-- Slogan --> 
 <header> 
   <h1>“Reconnectez-vous à l’essentiel : des cabanes et maisons uniques, au cœur de la nature.”</h1>
 </header> 
 
-<!-- Services --> 
-<section class="features__accueil2"> 
-  <div class="feature__accueil2"> 
-    <i class="fa-solid fa-leaf"></i> 
+<!-- Services -->
+
+<section class="features__accueil2">
+  <!-- carte toujours visible -->
+  <div class="feature__accueil2">
+    <i class="fa-solid fa-leaf"></i>
     <p>éco-responsables</p>
-  </div> 
-  <div class="feature__accueil2"> 
-    <i class="fa-solid fa-wifi"></i> 
-    <p>Wi-Fi haut débit</p> 
-  </div> 
-  <div class="feature__accueil2"> 
-    <i class="fa-regular fa-comments"></i> 
-    <p>Assistance 24h/24 et 7j/7</p> 
-  </div> 
+  </div>
+
+  <!-- cartes secondaires -->
+  <div class="feature__accueil2 feature-hidden">
+    <i class="fa-solid fa-wifi"></i>
+    <p>Wi-Fi haut débit</p>
+  </div>
+  <div class="feature__accueil2 feature-hidden">
+    <i class="fa-regular fa-comments"></i>
+    <p>Assistance 24h/24 et 7j/7</p>
+  </div>
+
+  <!-- bouton flèche (uniquement mobile) -->
+  <button class="features-toggle">
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
 </section>
+
 
 <!-- Emplacements -->
 <h2>Choisissez votre emplacement</h2>
-<div class="locations__accueil2">
-  <div class="location__accueil2"><img src="https://picsum.photos/200/150?1" alt=""><p>Shoreditch</p></div>
-  <div class="location__accueil2"><img src="https://picsum.photos/200/150?2" alt=""><p>City of London</p></div>
-  <div class="location__accueil2"><img src="https://picsum.photos/200/150?3" alt=""><p>The West End</p></div>
-  <div class="location__accueil2"><img src="https://picsum.photos/200/150?4" alt=""><p>Kensington</p></div>
-  <div class="location__accueil2"><img src="https://picsum.photos/200/150?5" alt=""><p>Kingston-Upon-Thames</p></div>
-  <div class="location__accueil2"><img src="https://picsum.photos/200/150?6" alt=""><p>Hammersmith</p></div>
+<div class="carousel-container__accueil2 emplacements">
+  <button class="arrow__accueil2 left"><i class="fa-solid fa-chevron-left"></i></button>
+
+  <div class="locations__accueil2 carousel__accueil2">
+    <div class="location__accueil2"><img src="https://picsum.photos/200/150?1" alt=""><p>Shoreditch</p></div>
+    <div class="location__accueil2"><img src="https://picsum.photos/200/150?2" alt=""><p>City of London</p></div>
+    <div class="location__accueil2"><img src="https://picsum.photos/200/150?3" alt=""><p>The West End</p></div>
+    <div class="location__accueil2"><img src="https://picsum.photos/200/150?4" alt=""><p>Kensington</p></div>
+    <div class="location__accueil2"><img src="https://picsum.photos/200/150?5" alt=""><p>Kingston-Upon-Thames</p></div>
+    <div class="location__accueil2"><img src="https://picsum.photos/200/150?4" alt=""><p>Kensington</p></div>
+    <div class="location__accueil2"><img src="https://picsum.photos/200/150?5" alt=""><p>Kingston-Upon-Thames</p></div>
+  </div>
+
+  <button class="arrow__accueil2 right"><i class="fa-solid fa-chevron-right"></i></button>
 </div>
 
-  <button class="arrow__accueil2 right"><i class="fa fa-chevron-right"></i></button>
-</div>
 
 <!-- Logements -->
 <h2>Profitez du soleil</h2>
 <div class="carousel-container__accueil2">
   <button class="arrow__accueil2 left"><i class="fa-solid fa-chevron-left"></i></button>
   <div class="carousel__accueil2">
-
-    <!-- Carte 1 -->
+    <!-- Exemple de cartes logements -->
     <div class="card__accueil2">
       <img src="https://picsum.photos/600/400?1" alt="">
       <div class="card-content__accueil2">
@@ -229,8 +243,6 @@
         <div class="availability__accueil2">Disponible <b>28 Nov 2021</b></div>
       </div>
     </div>
-
-    <!-- Carte 2 -->
     <div class="card__accueil2">
       <img src="https://picsum.photos/600/400?2" alt="">
       <div class="card-content__accueil2">
@@ -244,83 +256,47 @@
         <div class="availability__accueil2">Disponible <b>30 Nov 2021</b></div>
       </div>
     </div>
-
-    <!-- Carte 3 -->
     <div class="card__accueil2">
-      <img src="https://picsum.photos/600/400?3" alt="">
+      <img src="https://picsum.photos/600/400?2" alt="">
       <div class="card-content__accueil2">
-        <h3>Maison avec terrasse ensoleillée</h3>
-        <div class="icons__accueil2">
-          <span><i class="fa-solid fa-bed"></i> 3 chambres</span>
-          <span><i class="fa-solid fa-bath"></i> 2 bains</span>
-          <span><i class="fa-solid fa-wifi"></i> WiFi</span>
-        </div>
-        <div class="price__accueil2">200 € <span class="unit__accueil2">/nuit</span></div>
-        <div class="availability__accueil2">Disponible <b>02 Déc 2021</b></div>
-      </div>
-    </div>
-
-    <!-- Carte 4 -->
-    <div class="card__accueil2">
-      <img src="https://picsum.photos/600/400?4" alt="">
-      <div class="card-content__accueil2">
-        <h3>Appartement moderne et lumineux</h3>
-        <div class="icons__accueil2">
-          <span><i class="fa-solid fa-bed"></i> 1 chambre</span>
-          <span><i class="fa-solid fa-bath"></i> 1 bain</span>
-          <span><i class="fa-solid fa-wifi"></i> WiFi</span>
-        </div>
-        <div class="price__accueil2">100 € <span class="unit__accueil2">/nuit</span></div>
-        <div class="availability__accueil2">Disponible <b>01 Déc 2021</b></div>
-      </div>
-    </div>
-
-    <!-- Carte 5 -->
-    <div class="card__accueil2">
-      <img src="https://picsum.photos/600/400?5" alt="">
-      <div class="card-content__accueil2">
-        <h3>Cabane en pleine nature</h3>
+        <h3>Logement cosy au cœur de la ville</h3>
         <div class="icons__accueil2">
           <span><i class="fa-solid fa-bed"></i> 2 chambres</span>
           <span><i class="fa-solid fa-bath"></i> 1 bain</span>
           <span><i class="fa-solid fa-wifi"></i> WiFi</span>
         </div>
-        <div class="price__accueil2">180 € <span class="unit__accueil2">/nuit</span></div>
-        <div class="availability__accueil2">Disponible <b>05 Déc 2021</b></div>
+        <div class="price__accueil2">150 € <span class="unit__accueil2">/nuit</span></div>
+        <div class="availability__accueil2">Disponible <b>30 Nov 2021</b></div>
       </div>
     </div>
-
-    <!-- Carte 6 -->
     <div class="card__accueil2">
-      <img src="https://picsum.photos/600/400?6" alt="">
+      <img src="https://picsum.photos/600/400?2" alt="">
       <div class="card-content__accueil2">
-        <h3>Villa avec piscine privée</h3>
+        <h3>Logement cosy au cœur de la ville</h3>
         <div class="icons__accueil2">
-          <span><i class="fa-solid fa-bed"></i> 4 chambres</span>
-          <span><i class="fa-solid fa-bath"></i> 3 bains</span>
-          <span><i class="fa-solid fa-wifi"></i> WiFi</span>
-        </div>
-        <div class="price__accueil2">350 € <span class="unit__accueil2">/nuit</span></div>
-        <div class="availability__accueil2">Disponible <b>10 Déc 2021</b></div>
-      </div>
-    </div>
-
-    <!-- Carte 7 -->
-    <div class="card__accueil2">
-      <img src="https://picsum.photos/600/400?7" alt="">
-      <div class="card-content__accueil2">
-        <h3>Studio pratique et bien placé</h3>
-        <div class="icons__accueil2">
-          <span><i class="fa-solid fa-bed"></i> 1 chambre</span>
+          <span><i class="fa-solid fa-bed"></i> 2 chambres</span>
           <span><i class="fa-solid fa-bath"></i> 1 bain</span>
           <span><i class="fa-solid fa-wifi"></i> WiFi</span>
         </div>
-        <div class="price__accueil2">90 € <span class="unit__accueil2">/nuit</span></div>
-        <div class="availability__accueil2">Disponible <b>28 Nov 2021</b></div>
+        <div class="price__accueil2">150 € <span class="unit__accueil2">/nuit</span></div>
+        <div class="availability__accueil2">Disponible <b>30 Nov 2021</b></div>
       </div>
     </div>
-
+    <div class="card__accueil2">
+      <img src="https://picsum.photos/600/400?2" alt="">
+      <div class="card-content__accueil2">
+        <h3>Logement cosy au cœur de la ville</h3>
+        <div class="icons__accueil2">
+          <span><i class="fa-solid fa-bed"></i> 2 chambres</span>
+          <span><i class="fa-solid fa-bath"></i> 1 bain</span>
+          <span><i class="fa-solid fa-wifi"></i> WiFi</span>
+        </div>
+        <div class="price__accueil2">150 € <span class="unit__accueil2">/nuit</span></div>
+        <div class="availability__accueil2">Disponible <b>30 Nov 2021</b></div>
+      </div>
     </div>
+    <!-- ... ajoute les autres cartes logements ... -->
+  </div>
   <button class="arrow__accueil2 right"><i class="fa-solid fa-chevron-right"></i></button>
 </div>
 
@@ -334,11 +310,10 @@
   <p class="rating__accueil2">
     <span class="stars__accueil2">★★★★★</span> 5/5 - Basé sur 22.244 avis
   </p>
-  <div class="testimonials-container__accueil2">
+  <div class="carousel-container__accueil2">
     <button class="arrow__accueil2 left"><i class="fa-solid fa-chevron-left"></i></button>
-    <div class="testimonials-carousel__accueil2">
-      
-      <!-- Témoignage 1 -->
+    <div class="carousel__accueil2">
+      <!-- Exemple de témoignages -->
       <div class="testimonial-card__accueil2">
         <img src="https://picsum.photos/400/200?1" alt="Cabane">
         <div class="testimonial-content__accueil2">
@@ -350,8 +325,6 @@
           <p>Merveilleux séjour chez Émilie avec 3 amis : déconnexion et retour aux sources !</p>
         </div>
       </div>
-
-      <!-- Témoignage 2 -->
       <div class="testimonial-card__accueil2">
         <img src="https://picsum.photos/400/200?2" alt="Maison">
         <div class="testimonial-content__accueil2">
@@ -363,53 +336,59 @@
           <p>Un hôte incroyable et un lieu qui nous ressemble. En espérant recroiser votre route !</p>
         </div>
       </div>
-
-      <!-- Témoignage 3 -->
       <div class="testimonial-card__accueil2">
-        <img src="https://picsum.photos/400/200?3" alt="Chalet">
+        <img src="https://picsum.photos/400/200?2" alt="Maison">
         <div class="testimonial-content__accueil2">
           <div class="user__accueil2">
-            <img src="https://i.pravatar.cc/50?img=3" alt="Sophie">
-            <span class="name__accueil2">Sophie</span>
+            <img src="https://i.pravatar.cc/50?img=2" alt="Alex">
+            <span class="name__accueil2">Alex</span>
             <span class="note__accueil2">5/5 ⭐</span>
           </div>
-          <p>Tout était parfait, un endroit chaleureux et éco-responsable. Nous reviendrons sans hésiter !</p>
+          <p>Un hôte incroyable et un lieu qui nous ressemble. En espérant recroiser votre route !</p>
         </div>
       </div>
-
-      <!-- Témoignage 4 -->
       <div class="testimonial-card__accueil2">
-        <img src="https://picsum.photos/400/200?4" alt="Maison nature">
+        <img src="https://picsum.photos/400/200?2" alt="Maison">
         <div class="testimonial-content__accueil2">
           <div class="user__accueil2">
-            <img src="https://i.pravatar.cc/50?img=4" alt="Lucas">
-            <span class="name__accueil2">Lucas</span>
+            <img src="https://i.pravatar.cc/50?img=2" alt="Alex">
+            <span class="name__accueil2">Alex</span>
             <span class="note__accueil2">5/5 ⭐</span>
           </div>
-          <p>Super expérience ! L’endroit idéal pour décompresser le temps d’un week-end.</p>
+          <p>Un hôte incroyable et un lieu qui nous ressemble. En espérant recroiser votre route !</p>
         </div>
       </div>
-
-      <!-- Témoignage 5 -->
       <div class="testimonial-card__accueil2">
-        <img src="https://picsum.photos/400/200?5" alt="Cabane bois">
+        <img src="https://picsum.photos/400/200?2" alt="Maison">
         <div class="testimonial-content__accueil2">
           <div class="user__accueil2">
-            <img src="https://i.pravatar.cc/50?img=5" alt="Emma">
-            <span class="name__accueil2">Emma</span>
+            <img src="https://i.pravatar.cc/50?img=2" alt="Alex">
+            <span class="name__accueil2">Alex</span>
             <span class="note__accueil2">5/5 ⭐</span>
           </div>
-          <p>Un cadre magnifique et un accueil chaleureux. On recommande à 200% !</p>
+          <p>Un hôte incroyable et un lieu qui nous ressemble. En espérant recroiser votre route !</p>
         </div>
       </div>
-
+      <div class="testimonial-card__accueil2">
+        <img src="https://picsum.photos/400/200?2" alt="Maison">
+        <div class="testimonial-content__accueil2">
+          <div class="user__accueil2">
+            <img src="https://i.pravatar.cc/50?img=2" alt="Alex">
+            <span class="name__accueil2">Alex</span>
+            <span class="note__accueil2">5/5 ⭐</span>
+          </div>
+          <p>Un hôte incroyable et un lieu qui nous ressemble. En espérant recroiser votre route !</p>
+        </div>
+      </div>
+      <!-- ... ajoute les autres témoignages ... -->
     </div>
-    
     <button class="arrow__accueil2 right"><i class="fa-solid fa-chevron-right"></i></button>
   </div>
 </section>
 
-
+<div class="accueil__hero2">
+      <h1 class="accueil__titre">Merci de nous faire confiance.</h1>
+</div>
 
   <script src="assets/script/script.js"></script>
 </body>
