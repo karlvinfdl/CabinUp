@@ -272,3 +272,69 @@ const isMobile = () => window.innerWidth <= 768;
     });
   
 
+
+/* ========================================================================== */
+/*                     CARROUSEL ACCUEIL 2                                     */
+/* ========================================================================== */
+
+  const toggleBtn = document.querySelector(".features-toggle");
+  toggleBtn.addEventListener("click", function() {
+    document.querySelectorAll(".feature-hidden").forEach(el => {
+      el.classList.toggle("open");
+    });
+    this.classList.toggle("rotate");
+  });
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".carousel-container__accueil2").forEach(container => {
+    const carousel = container.querySelector(".carousel__accueil2");
+    const leftArrow = container.querySelector(".arrow__accueil2.left");
+    const rightArrow = container.querySelector(".arrow__accueil2.right");
+
+    if (!carousel || !leftArrow || !rightArrow) return;
+
+    const step = () => {
+      const item = carousel.querySelector("div");
+      return item ? item.offsetWidth + 20 : 300;
+    };
+
+    function updateArrows() {
+      const max = carousel.scrollWidth - carousel.clientWidth;
+      const x = carousel.scrollLeft;
+      leftArrow.disabled = x <= 2;
+      rightArrow.disabled = x >= max - 2;
+    }
+
+    rightArrow.addEventListener("click", () => {
+      carousel.scrollBy({ left: step(), behavior: "smooth" });
+    });
+    leftArrow.addEventListener("click", () => {
+      carousel.scrollBy({ left: -step(), behavior: "smooth" });
+    });
+
+    carousel.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+
+    // Drag
+    let isDown = false, startX = 0, scrollStart = 0;
+    carousel.addEventListener("pointerdown", (e) => {
+      isDown = true;
+      startX = e.clientX;
+      scrollStart = carousel.scrollLeft;
+      carousel.setPointerCapture(e.pointerId);
+    });
+    carousel.addEventListener("pointermove", (e) => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      carousel.scrollLeft = scrollStart - dx;
+    });
+    ["pointerup", "pointercancel", "pointerleave"].forEach(evt =>
+      carousel.addEventListener(evt, () => { isDown = false; updateArrows(); })
+    );
+
+    updateArrows();
+  });
+});
