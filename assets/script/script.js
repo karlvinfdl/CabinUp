@@ -262,25 +262,29 @@ const isMobile = () => window.innerWidth <= 768;
 /* ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".carousel-container__accueil2").forEach(container => {
-    const carousel = container.querySelector(".carousel__accueil2");
+  document.querySelectorAll(
+    ".carousel-container__accueil2, .testimonials-container__accueil2"
+  ).forEach(container => {
+    const carousel = container.querySelector(".carousel__accueil2, .testimonials-carousel__accueil2");
     const leftArrow = container.querySelector(".arrow__accueil2.left");
     const rightArrow = container.querySelector(".arrow__accueil2.right");
 
     if (!carousel || !leftArrow || !rightArrow) return;
 
-    const step = () => {
-      const item = carousel.querySelector("div");
-      return item ? item.offsetWidth + 20 : 300;
-    };
-
-    function updateArrows() {
-      const max = carousel.scrollWidth - carousel.clientWidth;
-      const x = carousel.scrollLeft;
-      leftArrow.disabled = x <= 2;
-      rightArrow.disabled = x >= max - 2;
+    // largeur d'une carte
+    function step() {
+      const item = carousel.querySelector(".card__accueil2, .testimonial-card__accueil2");
+      return item ? item.offsetWidth + parseInt(getComputedStyle(carousel).gap || 20) : 300;
     }
 
+    function updateArrows() {
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const x = carousel.scrollLeft;
+      leftArrow.disabled = x <= 1;
+      rightArrow.disabled = x >= maxScroll - 1;
+    }
+
+    // clics
     rightArrow.addEventListener("click", () => {
       carousel.scrollBy({ left: step(), behavior: "smooth" });
     });
@@ -288,11 +292,8 @@ document.addEventListener("DOMContentLoaded", () => {
       carousel.scrollBy({ left: -step(), behavior: "smooth" });
     });
 
-    carousel.addEventListener("scroll", updateArrows, { passive: true });
-    window.addEventListener("resize", updateArrows);
-
-    // Drag
-    let isDown = false, startX = 0, scrollStart = 0;
+    // drag
+    let isDown = false, startX, scrollStart;
     carousel.addEventListener("pointerdown", (e) => {
       isDown = true;
       startX = e.clientX;
@@ -301,13 +302,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     carousel.addEventListener("pointermove", (e) => {
       if (!isDown) return;
-      const dx = e.clientX - startX;
-      carousel.scrollLeft = scrollStart - dx;
+      carousel.scrollLeft = scrollStart - (e.clientX - startX);
     });
     ["pointerup", "pointercancel", "pointerleave"].forEach(evt =>
       carousel.addEventListener(evt, () => { isDown = false; updateArrows(); })
     );
 
+    // events
+    carousel.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+    window.addEventListener("load", updateArrows);
+
+    // init
     updateArrows();
   });
 });
