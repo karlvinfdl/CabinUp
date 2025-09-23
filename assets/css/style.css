@@ -471,6 +471,270 @@ html {
   border-radius: 16px;
 }
 
+/* ========================= */
+/* SLOGAN (header) */
+/* ========================= */
+
+header h1 {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #1d3528; /* vert foncé */
+  text-align: center;
+  margin-top: 30px;
+  font-family: 'Epunda Slab', serif;
+  font-size: 2rem;
+}
+
+/* ========================= */
+/* SERVICES (features) */
+/* ========================= */
+.features__accueil2 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px auto 40px;
+  flex-wrap: wrap;
+  max-width: 900px;
+}
+
+.feature__accueil2 {
+  background: #F5F1E6; /* beige doux */
+  border-radius: 12px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  text-align: center;
+  font-size: 15px;
+  color: #2d3d31; /* gris-vert */
+}
+
+.feature__accueil2 i {
+  font-size: 28px;
+  color: #285c48; /* vert accent */
+  margin-bottom: 10px;
+}
+
+/* Titres */
+h2 {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #214433;
+  font-family: 'Epunda Slab', serif;
+  margin-top: 5rem;
+}
+
+/* Emplacements */
+.locations__accueil2 {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+.location__accueil2 {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+.location__accueil2 img {
+  width: 120px;
+  height: 100px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+ /* Carrousel */
+.carousel-container__accueil2 {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+}
+.carousel__accueil2 {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+.carousel__accueil2::-webkit-scrollbar { display: none; }
+
+/* Cartes logement (style maquette) */
+.card__accueil2 {
+  background: #f6f3ec;
+  border-radius: 20px 0 20px 20px;
+  flex: 0 0 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.card__accueil2 img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 0;
+}
+.card-content__accueil2 { padding: 15px; }
+.card-content__accueil2 h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.icons__accueil2 { font-size: 13px; margin-bottom: 10px; color: #333; }
+.icons__accueil2 span { margin-right: 15px; }
+.icons__accueil2 i { margin-right: 5px; color: #1d1d1d; }
+.price__accueil2 { font-size: 16px; font-weight: bold; margin-bottom: 10px; }
+.price__accueil2 .unit__accueil2 { font-size: 13px; font-weight: normal; color: #444; }
+.availability__accueil2 {
+  background: #2f5c48;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+/* Bouton bas de page */
+.btn-container__accueil2 { text-align: center; margin: 50px 0; }
+.btn__accueil2 {
+  display: inline-block;
+  padding: 12px 32px;
+  background: #2f5c48;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn__accueil2:hover { background: #1d3c2d; }
+
+/* Section témoignages */
+.testimonials__accueil2 {
+  text-align: center;
+  margin: 60px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+.testimonials__accueil2 h2 {
+  font-family: 'Epunda slab', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #214433;
+  margin-bottom: 10px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonials__accueil2 h2::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 32px;
+  background: #7b4b2a;
+  border-radius: 3px;
+}
+.testimonials__accueil2 .rating__accueil2 {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+  text-align: left;
+}
+.stars__accueil2 {
+  color: #ffc107;
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+/* Carrousel témoignages */
+.testimonials-container__accueil2 {
+  position: relative;
+}
+.testimonials-carousel__accueil2 {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+.testimonials-carousel__accueil2::-webkit-scrollbar { display: none; }
+
+/* Carte témoignage */
+.testimonial-card__accueil2 {
+  flex: 0 0 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: left;
+}
+.testimonial-card__accueil2 img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.testimonial-content__accueil2 {
+  padding: 15px;
+  font-size: 14px;
+  color: #333;
+}
+.user__accueil2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.user__accueil2 img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.user__accueil2 .name__accueil2 {
+  font-weight: bold;
+  color: #214433;
+}
+.user__accueil2 .note__accueil2 {
+  margin-left: auto;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Flèches universelles */
+.arrow__accueil2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #2f5c48;
+  border: none;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 15%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: background 0.2s, transform 0.2s;
+}
+.arrow__accueil2.left { left: -30px; }
+.arrow__accueil2.right { right: -30px; }
+.arrow__accueil2 i { font-size: 20px; }
+.arrow__accueil2:hover { background: #1d3c2d; transform: translateY(-50%) scale(1.1); }
+.arrow__accueil2:disabled {
+  opacity: .35;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+
+
 /* ========================================================================== */
 /*                            RESPONSIVE MOBILE                               */
 /* ========================================================================== */
