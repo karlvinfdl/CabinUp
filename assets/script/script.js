@@ -1,4 +1,3 @@
-
 /* ========================================================================== */
 /*                                UTILS                                       */
 /* ========================================================================== */
@@ -11,24 +10,24 @@ const isMobile = () => window.innerWidth <= 768;
 /* ========================================================================== */
 /*                   DESKTOP : CALENDRIER DROPDOWN                            */
 /* ========================================================================== */
-(function desktopCalendar(){
+(function desktopCalendar() {
   const container = document.getElementById("calendar-desktop");
+  if (!container) return;
+
   const grid      = document.getElementById("d-grid");
   const monthEl   = document.getElementById("d-month");
   const yearEl    = document.getElementById("d-year");
   const prevBtn   = document.getElementById("d-prev");
   const nextBtn   = document.getElementById("d-next");
+
   const arrivalInput   = document.getElementById("arrival");
   const departureInput = document.getElementById("departure");
-
-  if (!container) return;
 
   let current = new Date();
   let selectingArrival = true;
   let arrivalDate = null;
   let departureDate = null;
 
-  /* ---- Rendu du calendrier ---- */
   function render(){
     grid.innerHTML = "";
     const y = current.getFullYear();
@@ -40,7 +39,6 @@ const isMobile = () => window.innerWidth <= 768;
     const last  = new Date(y, m+1, 0).getDate();
 
     for(let i=0;i<first;i++) grid.appendChild(document.createElement("div"));
-
     for(let d=1; d<=last; d++){
       const cell = document.createElement("div");
       cell.className = "accueil__day";
@@ -150,12 +148,11 @@ const isMobile = () => window.innerWidth <= 768;
 /* ========================================================================== */
 (function mobilePopup(){
   const popup    = document.getElementById("mobile-popup");
+  if (!popup) return;
   const openBtn  = document.getElementById("search-btn");
   const closeBtn = document.getElementById("popup-close");
   const clearBtn = document.getElementById("popup-clear");
   const goBtn    = document.getElementById("popup-search");
-
-  if (!popup) return;
 
   /* ---- Ouverture / Fermeture ---- */
   openBtn.addEventListener("click", ()=>{
@@ -207,6 +204,7 @@ const isMobile = () => window.innerWidth <= 768;
       grid.appendChild(cell);
     }
   }
+
   prev.addEventListener("click", ()=>{ cur.setMonth(cur.getMonth()-1); renderM(); });
   next.addEventListener("click", ()=>{ cur.setMonth(cur.getMonth()+1); renderM(); });
   renderM();
@@ -236,105 +234,230 @@ const isMobile = () => window.innerWidth <= 768;
   });
 
   goBtn.addEventListener("click", ()=>{
-    // Exemple de récupération (à brancher à ta recherche)
     const dest = document.getElementById("dest-mobile").value.trim();
     console.log({ dest, mArrival, mDeparture, mCounts });
 
     popup.classList.remove("active");
     document.body.style.overflow = "";
 
-    // Remplissage des inputs desktop pour cohérence
-    const arrivalInput   = document.getElementById("arrival");
-    const departureInput = document.getElementById("departure");
-    if (mArrival)   arrivalInput.value   = mArrival.toLocaleDateString("fr-FR");
-    if (mDeparture) departureInput.value = mDeparture.toLocaleDateString("fr-FR");
+    // Sync vers desktop
+    if (mArrival)   document.getElementById("arrival").value   = mArrival.toLocaleDateString("fr-FR");
+    if (mDeparture) document.getElementById("departure").value = mDeparture.toLocaleDateString("fr-FR");
 
-    const voyageurs = document.getElementById("voyageurs");
     const total = mCounts.adults + mCounts.children;
-    voyageurs.value = `${total} voyageur${total>1?'s':''}${mCounts.pets?`, ${mCounts.pets} animal${mCounts.pets>1?'s':''}`:''}`;
+    let txt = `${total} voyageur${total>1?"s":""}`;
+    if (mCounts.pets) txt += `, ${mCounts.pets} animal${mCounts.pets>1?"s":""}`;
+    document.getElementById("voyageurs").value = txt;
 
-    const destDesk = document.getElementById("dest-desktop");
-    if (dest) destDesk.value = dest;
+    if (dest) document.getElementById("dest-desktop").value = dest;
   });
 })();
 
+/* ========================================================================== */
+/*                           MENU MOBILE                                      */
+/* ========================================================================== */
+(function mobileMenu() {
+  const navToggle  = document.getElementById("nav-toggle");
+  const menuClose  = document.getElementById("menu-close");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-    const navToggle = document.getElementById("nav-toggle");
-    const menuClose = document.getElementById("menu-close");
-    const mobileMenu = document.getElementById("mobile-menu");
+  if (!navToggle || !mobileMenu) return;
 
-    navToggle.addEventListener("click", () => {
-      mobileMenu.style.display = "flex";
-    });
+  navToggle.addEventListener("click", () => {
+    mobileMenu.style.display = "flex";
+  });
 
-    menuClose.addEventListener("click", () => {
-      mobileMenu.style.display = "none";
-    });
-  
-
+  menuClose.addEventListener("click", () => {
+    mobileMenu.style.display = "none";
+  });
+})();
 
 /* ========================================================================== */
-/*                     CARROUSEL ACCUEIL 2                                     */
+/*                           CARROUSEL ACCUEIL                                */
 /* ========================================================================== */
-
+(function carouselAccueil() {
   const toggleBtn = document.querySelector(".features-toggle");
-  toggleBtn.addEventListener("click", function() {
-    document.querySelectorAll(".feature-hidden").forEach(el => {
-      el.classList.toggle("open");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function() {
+      document.querySelectorAll(".feature-hidden").forEach(el => {
+        el.classList.toggle("open");
+      });
+      this.classList.toggle("rotate");
     });
-    this.classList.toggle("rotate");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".carousel-container__accueil2").forEach(container => {
+      const carousel = container.querySelector(".carousel__accueil2");
+      const leftArrow = container.querySelector(".arrow__accueil2.left");
+      const rightArrow = container.querySelector(".arrow__accueil2.right");
+
+      if (!carousel || !leftArrow || !rightArrow) return;
+
+      const step = () => {
+        const item = carousel.querySelector("div");
+        return item ? item.offsetWidth + 20 : 300;
+      };
+
+      function updateArrows() {
+        const max = carousel.scrollWidth - carousel.clientWidth;
+        const x = carousel.scrollLeft;
+        leftArrow.disabled = x <= 2;
+        rightArrow.disabled = x >= max - 2;
+      }
+
+      rightArrow.addEventListener("click", () => {
+        carousel.scrollBy({ left: step(), behavior: "smooth" });
+      });
+      leftArrow.addEventListener("click", () => {
+        carousel.scrollBy({ left: -step(), behavior: "smooth" });
+      });
+
+      carousel.addEventListener("scroll", updateArrows, { passive: true });
+      window.addEventListener("resize", updateArrows);
+
+      // Drag
+      let isDown = false, startX = 0, scrollStart = 0;
+      carousel.addEventListener("pointerdown", (e) => {
+        isDown = true;
+        startX = e.clientX;
+        scrollStart = carousel.scrollLeft;
+        carousel.setPointerCapture(e.pointerId);
+      });
+      carousel.addEventListener("pointermove", (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        carousel.scrollLeft = scrollStart - dx;
+      });
+      ["pointerup", "pointercancel", "pointerleave"].forEach(evt =>
+        carousel.addEventListener(evt, () => { isDown = false; updateArrows(); })
+      );
+
+      updateArrows();
+    });
   });
+})();
 
+/* ========================================================================== */
+/*                              PAGINATION                                    */
+/* ========================================================================== */
+(function pagination() {
+  const cardsPerPage = 4;
+  let currentPage = 1;
 
+  function renderPagination() {
+    const cards = Array.from(document.querySelectorAll("#cardsContainer .card"));
+    const totalPages = Math.ceil(cards.length / cardsPerPage);
+    const pagination = document.getElementById("pagination");
+    if (!pagination) return;
+    pagination.innerHTML = "";
 
+    // cacher/afficher les cards
+    cards.forEach((card, index) => {
+      card.style.display =
+        index >= (currentPage - 1) * cardsPerPage &&
+        index < currentPage * cardsPerPage
+          ? "flex"
+          : "none";
+    });
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".carousel-container__accueil2").forEach(container => {
-    const carousel = container.querySelector(".carousel__accueil2");
-    const leftArrow = container.querySelector(".arrow__accueil2.left");
-    const rightArrow = container.querySelector(".arrow__accueil2.right");
+    // générer les boutons
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add("active");
 
-    if (!carousel || !leftArrow || !rightArrow) return;
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        renderPagination();
+      });
 
-    const step = () => {
-      const item = carousel.querySelector("div");
-      return item ? item.offsetWidth + 20 : 300;
-    };
-
-    function updateArrows() {
-      const max = carousel.scrollWidth - carousel.clientWidth;
-      const x = carousel.scrollLeft;
-      leftArrow.disabled = x <= 2;
-      rightArrow.disabled = x >= max - 2;
+      pagination.appendChild(btn);
     }
+  }
 
-    rightArrow.addEventListener("click", () => {
-      carousel.scrollBy({ left: step(), behavior: "smooth" });
-    });
-    leftArrow.addEventListener("click", () => {
-      carousel.scrollBy({ left: -step(), behavior: "smooth" });
-    });
+  renderPagination();
+})();
 
-    carousel.addEventListener("scroll", updateArrows, { passive: true });
-    window.addEventListener("resize", updateArrows);
+/* ========================================================================== */
+/*                             LEAFLET - CARTE                                */
+/* ========================================================================== */
+(function leafletMap() {
+  const mapEl = document.getElementById("map");
+  if (!mapEl) return;
 
-    // Drag
-    let isDown = false, startX = 0, scrollStart = 0;
-    carousel.addEventListener("pointerdown", (e) => {
-      isDown = true;
-      startX = e.clientX;
-      scrollStart = carousel.scrollLeft;
-      carousel.setPointerCapture(e.pointerId);
-    });
-    carousel.addEventListener("pointermove", (e) => {
-      if (!isDown) return;
-      const dx = e.clientX - startX;
-      carousel.scrollLeft = scrollStart - dx;
-    });
-    ["pointerup", "pointercancel", "pointerleave"].forEach(evt =>
-      carousel.addEventListener(evt, () => { isDown = false; updateArrows(); })
-    );
+  const map = L.map("map").setView([46.5, 2], 6);
 
-    updateArrows();
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: "abcd",
+    maxZoom: 20
+  }).addTo(map);
+
+  const cards = document.querySelectorAll(".card");
+  const bounds = [];
+
+  cards.forEach(card => {
+    const lat = parseFloat(card.dataset.lat);
+    const lng = parseFloat(card.dataset.lng);
+    const prix = card.dataset.prix;
+    const ville = card.dataset.ville;
+    const dispo = card.dataset.dispo;
+    const imgSrc = card.querySelector("img").src;
+
+    if (!isNaN(lat) && !isNaN(lng)) {
+      const marker = L.marker([lat, lng], {
+        icon: L.divIcon({
+          className: "price-marker",
+          html: prix,
+          iconSize: null,
+          iconAnchor: [30, 20]
+        })
+      }).addTo(map);
+
+      marker.bindPopup(`
+        <div style="text-align:center;width:250px">
+          <img src="${imgSrc}" alt="${ville}" 
+               style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:8px">
+          <strong style="font-size:16px">${ville}</strong><br>
+          <small>${dispo}</small><br>
+          <span style="font-weight:bold;color:#2f6f3f;font-size:16px">${prix}</span>
+        </div>
+      `, { maxWidth: 260 });
+
+      bounds.push([lat, lng]);
+    }
   });
-});
+
+  if (bounds.length > 0) {
+    map.fitBounds(bounds, { padding: [50, 50] });
+  }
+
+  /* ======================================================================== */
+  /*                  LIEN RECHERCHE ↔ CARDS & CARTE                          */
+  /* ======================================================================== */
+  const searchBtn = document.getElementById("search-btn");
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      const destInput = document.getElementById("dest-desktop").value.trim().toLowerCase();
+      const cards = document.querySelectorAll(".card");
+      const bounds = [];
+
+      cards.forEach(card => {
+        const ville = card.dataset.ville.toLowerCase();
+        if (!destInput || ville.includes(destInput)) {
+          card.classList.remove("hidden");
+          const lat = parseFloat(card.dataset.lat);
+          const lng = parseFloat(card.dataset.lng);
+          if (!isNaN(lat) && !isNaN(lng)) bounds.push([lat, lng]);
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+
+      if (bounds.length > 0) {
+        map.fitBounds(bounds, { padding: [50, 50] });
+      }
+    });
+  }
+})();

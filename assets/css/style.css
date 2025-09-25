@@ -18,15 +18,25 @@
   box-sizing: border-box;
 }
 
+
+body {
+  margin: 0;
+=======
 body,
 html {
   height: 100%;
+
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
   background: #fff;
   color: #1a1a1a;
   line-height: 1.5;
 }
 
+
+h1 {
+  margin: 0;
+  color: #2f4f4f;
+=======
 /* ========================================================================== */
 /*                                NAVBAR                                      */
 /* ========================================================================== */
@@ -165,6 +175,7 @@ html {
   color: var(--beige);
   margin-top: 25vh;
   line-height: 1.4;
+
 }
 
 /* ========================================================================== */
@@ -173,10 +184,24 @@ html {
 .accueil__search {
   display: flex;
   align-items: center;
+
+  background: var(--beige, #f5f5f5);
+=======
   background: var(--beige);
+
   border-radius: 50px;
   overflow: hidden;
 }
+
+/* ✅ Correction : barre dans la section catalogue */
+.catalogue .accueil__search {
+  margin: 0 0 20px 0;
+  max-width: 1000px;
+  width: 100%;
+  align-self: center;
+}
+
+=======
 
 .accueil__seg {
   flex: 1;
@@ -187,7 +212,11 @@ html {
 
 .accueil__label {
   font-weight: 600;
+
+  color: var(--green, #2f4f4f);
+=======
   color: var(--green);
+
   font-size: 14px;
   margin-bottom: 4px;
 }
@@ -203,9 +232,15 @@ html {
 }
 
 .accueil__cta {
+
+  background: var(--green, #2f4f4f);
+  color: #fff;
+  border: 2px solid var(--green, #2f4f4f);
+=======
   background: var(--green);
   color: #fff;
   border: 2px solid var(--green);
+
   font-weight: 700;
   padding: 20px 24px;
   border-radius: 50px;
@@ -250,7 +285,11 @@ html {
 
 .accueil__toggle {
   display: flex;
+
+  background: var(--beige, #f0f0f0);
+=======
   background: var(--beige);
+
   border-radius: 999px;
   padding: 4px;
   gap: 4px;
@@ -269,7 +308,11 @@ html {
 
 .accueil__toggle-btn--active {
   background: #fff;
+
+  color: var(--green, #2f4f4f);
+=======
   color: var(--green);
+
 }
 
 .accueil__calendar-nav {
@@ -286,8 +329,13 @@ html {
   height: 28px;
   border-radius: 50%;
   border: 0;
+
+  background: var(--beige, #eee);
+  color: var(--green, #2f4f4f);
+=======
   background: var(--beige);
   color: var(--green);
+
   cursor: pointer;
 }
 
@@ -297,7 +345,11 @@ html {
   text-align: center;
   font-size: 12px;
   font-weight: 700;
+
+  color: var(--green, #2f4f4f);
+=======
   color: var(--green);
+
   margin-bottom: 6px;
 }
 
@@ -319,12 +371,20 @@ html {
 
 .accueil__day:hover,
 .accueil__mday:hover {
+
+  background: var(--beige, #eee);
+=======
   background: var(--beige);
+
 }
 
 .accueil__day--selected,
 .accueil__mday--selected {
+
+  background: var(--green, #2f4f4f);
+=======
   background: var(--green);
+
   color: #fff;
   font-weight: 700;
 }
@@ -354,7 +414,11 @@ html {
 .accueil__row-sub {
   display: block;
   font-weight: 400;
+
+  color: var(--grey, #888);
+=======
   color: var(--grey);
+
   font-size: 12px;
 }
 
@@ -373,7 +437,11 @@ html {
 }
 
 /* ========================================================================== */
+
+/*                BOUTONS + / − (COMPTEURS VOYAGEURS)                         */
+=======
 /*                BOUTONS + / − (CORRECTIF : STYLE MOBILE FORCÉ)              */
+
 /* ========================================================================== */
 .accueil__ctl {
   all: unset;
@@ -400,11 +468,19 @@ html {
 }
 
 .accueil__ctl.-plus {
+
+  border: 1px solid var(--green, #2f4f4f);
+  color: var(--green, #2f4f4f);
+}
+.accueil__ctl.-plus:hover {
+  background: var(--green, #2f4f4f);
+=======
   border: 1px solid var(--green);
   color: var(--green);
 }
 .accueil__ctl.-plus:hover {
   background: var(--green);
+
   color: #fff;
 }
 
@@ -420,9 +496,13 @@ html {
   overflow: auto;
 }
 
+.accueil__popup.active { display: block; }
+=======
+
 .accueil__popup.active {
   display: block;
 }
+
 
 .accueil__popup-content {
   padding: 20px 16px 120px;
@@ -440,7 +520,11 @@ html {
   background: transparent;
   border: 0;
   font-size: 22px;
+
+  color: var(--green, #2f4f4f);
+=======
   color: var(--green);
+
   cursor: pointer;
 }
 
@@ -457,21 +541,34 @@ html {
   color: #000;
 }
 
+
+/* --- Champ Où ? (mobile) --- */
+=======
 /* --- Champ Où ? --- */
+
 .accueil__mobile-search {
   display: flex;
   align-items: center;
   gap: 10px;
+
+  background: var(--green, #2f4f4f);
+  border-radius: 999px;
+  padding: 10px 14px;
+}
+=======
   background: var(--green);
   border-radius: 999px;
   padding: 10px 14px;
 }
+
 
 .accueil__mobile-search svg {
   width: 22px;
   height: 22px;
   fill: #fff;
 }
+=======
+
 
 .accueil__mobile-search input {
   flex: 1;
@@ -481,11 +578,16 @@ html {
   font-size: 15px;
 }
 
+.accueil__mobile-search input::placeholder { color: #EAF3EF; }
+
+=======
+
 .accueil__mobile-search input::placeholder {
   color: #EAF3EF;
 }
 
 /* --- Segmented Dates/Mois --- */
+
 .accueil__segmented {
   display: inline-flex;
   background: #E6F1EC;
@@ -493,6 +595,9 @@ html {
   padding: 4px;
   gap: 4px;
 }
+
+=======
+
 
 .accueil__segmented-btn {
   border: 0;
@@ -505,7 +610,13 @@ html {
 
 .accueil__segmented-btn.is-active {
   background: #fff;
+  color: var(--green, #2f4f4f);
+=======
+
+.accueil__segmented-btn.is-active {
+  background: #fff;
   color: var(--green);
+
 }
 
 /* --- Calendrier mobile --- */
@@ -516,6 +627,9 @@ html {
   margin: 10px 0;
 }
 
+=======
+
+
 .accueil__mcal-title {
   display: flex;
   gap: 8px;
@@ -524,16 +638,27 @@ html {
   color: #000;
 }
 
+=======
+
+
 .accueil__mnav {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   border: 0;
+
+  background: var(--beige, #eee);
+  color: var(--green, #2f4f4f);
+  font-weight: 700;
+  cursor: pointer;
+}
+=======
   background: var(--beige);
   color: var(--green);
   font-weight: 700;
   cursor: pointer;
 }
+
 
 .accueil__mcal-week {
   display: grid;
@@ -541,9 +666,15 @@ html {
   text-align: center;
   font-size: 12px;
   font-weight: 700;
+
+  color: var(--green, #2f4f4f);
+  margin-bottom: 6px;
+}
+=======
   color: var(--green);
   margin-bottom: 6px;
 }
+
 
 .accueil__mcal-grid {
   display: grid;
@@ -551,7 +682,11 @@ html {
   gap: 6px;
 }
 
+
+/* --- Footer popup --- */
+=======
 /* --- Footer actions --- */
+
 .accueil__popup-footer {
   position: fixed;
   left: 0;
@@ -565,6 +700,9 @@ html {
   gap: 12px;
 }
 
+=======
+
+
 .accueil__clear {
   background: transparent;
   border: 0;
@@ -573,6 +711,9 @@ html {
   text-decoration: underline;
   cursor: pointer;
 }
+
+=======
+
 
 .accueil__cta--big {
   display: inline-flex;
@@ -583,6 +724,275 @@ html {
 }
 
 /* ========================================================================== */
+
+/*                          CATALOGUE & CARDS                                 */
+/* ========================================================================== */
+main {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  height: calc(100vh - 150px);
+}
+
+.catalogue {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  align-items: stretch;
+  background: #ededed;
+  border-radius: 20px 20px 20px 0;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  height: 140px;
+  width: 100%;
+}
+.card img {
+  width: 140px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-right: 1px solid #eee;
+}
+.card-body {
+  padding: 0.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+.card p {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  margin-right: 1rem;
+}
+.card.hidden,
+.card.hidden-mobile { display: none !important; }
+
+.available {
+  display: inline-block;
+  margin: 0.3rem 0;
+  padding: 0.2rem 0.6rem;
+  background: #2f6f3f;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1rem;
+  align-self: flex-end;
+}
+
+/* ========================================================================== */
+/*                               PAGINATION                                   */
+/* ========================================================================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.pagination button {
+  border: none;
+  background: #eee;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pagination button.active {
+  background: var(--green, #2f4f4f);
+  color: #fff;
+}
+
+.pagination button:hover {
+  background: #ccc;
+}
+
+/* ========================================================================== */
+/*                                 MAP                                        */
+/* ========================================================================== */
+.map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.map-header {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#map {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+.price-marker {
+  background: #fff;
+  border: 2px solid #2f4f4f;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2f4f4f;
+  white-space: nowrap;
+}
+
+/* ========================================================================== */
+/*                             RESPONSIVE TABLETTE                            */
+/* ========================================================================== */
+@media (max-width: 1199px) and (min-width: 768px) {
+  main {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+    height: auto;
+  }
+  .map {
+    order: 1;
+    flex: none;
+    height: 350px;
+    min-height: 350px;
+  }
+  #map { height: 100%; min-height: 350px; }
+  .catalogue {
+    order: 2;
+    width: 100%;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    justify-items: left;
+  }
+  .card {
+    height: 140px;
+    width: 70%;
+    border-radius: 60px 60px 60px 12px;
+  }
+  .card img { width: 230px; }
+}
+
+/* ========================================================================== */
+/*                             RESPONSIVE MOBILE                              */
+/* ========================================================================== */
+@media (max-width: 767px) {
+  main {
+    flex-direction: column;
+    padding: 0.5rem;
+    height: auto;
+  }
+
+  /* Carte */
+  .map {
+    order: 1;
+    height: 280px;
+    min-height: 280px;
+  }
+  #map { height: 100%; min-height: 280px; }
+
+  /* Catalogue */
+  .catalogue {
+    order: 2;
+    width: 100%;
+  }
+
+  /* Grille logements */
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  /* Card */
+  .card {
+    height: 120px;
+    flex-direction: row;
+    width: 100%;
+  }
+  .card img {
+    width: 120px;
+    height: 100%;
+    border-right: 1px solid #eee;
+  }
+  .card-body { align-items: flex-start; }
+  .price { align-self: flex-start; }
+  .card.hidden-mobile { display: none !important; }
+
+  /* ✅ Barre recherche mobile : cacher champs mais garder bouton */
+  .accueil__search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .catalogue .accueil__search {
+    margin: 0 0 20px 0;
+    max-width: 1000px;
+    width: 40%;
+    align-self: center;
+  }
+
+  .accueil__search .accueil__seg {
+    display: none;
+  }
+
+  .accueil__search #search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green, #2f4f4f);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .accueil__search #search-btn::before {
+    content: "🔍";
+    font-size: 18px;
+  }
+}
+=======
 /*                            SERVICES & SECTIONS                             */
 /* ========================================================================== */
 header h1 {
@@ -1300,3 +1710,4 @@ h2 {
 
 /* === Desktop (par défaut) === */
 /* Tous les styles globaux s’appliquent */
+
