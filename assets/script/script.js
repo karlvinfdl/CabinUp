@@ -19,15 +19,16 @@ const isMobile = () => window.innerWidth <= 768;
   const yearEl    = document.getElementById("d-year");
   const prevBtn   = document.getElementById("d-prev");
   const nextBtn   = document.getElementById("d-next");
-  const arrivalEl = document.getElementById("arrival");
-  const departEl  = document.getElementById("departure");
+
+  const arrivalInput   = document.getElementById("arrival");
+  const departureInput = document.getElementById("departure");
 
   let current = new Date();
-  let pickingArrival = true;
+  let selectingArrival = true;
   let arrivalDate = null;
-  let departDate  = null;
+  let departureDate = null;
 
-  function render() {
+  function render(){
     grid.innerHTML = "";
     const y = current.getFullYear();
     const m = current.getMonth();
@@ -37,28 +38,28 @@ const isMobile = () => window.innerWidth <= 768;
     const first = (new Date(y, m, 1).getDay() + 6) % 7;
     const last  = new Date(y, m+1, 0).getDate();
 
-    for (let i=0; i<first; i++) grid.appendChild(document.createElement("div"));
-
-    for (let d=1; d<=last; d++) {
+    for(let i=0;i<first;i++) grid.appendChild(document.createElement("div"));
+    for(let d=1; d<=last; d++){
       const cell = document.createElement("div");
       cell.className = "accueil__day";
       cell.textContent = d;
 
-      const sel = 
+      const isSel =
         (arrivalDate && y===arrivalDate.getFullYear() && m===arrivalDate.getMonth() && d===arrivalDate.getDate()) ||
-        (departDate  && y===departDate.getFullYear()  && m===departDate.getMonth()  && d===departDate.getDate());
-      if (sel) cell.classList.add("accueil__day--selected");
+        (departureDate && y===departureDate.getFullYear() && m===departureDate.getMonth() && d===departureDate.getDate());
 
-      cell.addEventListener("click", () => {
+      if (isSel) cell.classList.add("accueil__day--selected");
+
+      cell.addEventListener("click", ()=>{
         const picked = new Date(y, m, d);
-        if (pickingArrival) {
+        if (selectingArrival) {
           arrivalDate = picked;
-          arrivalEl.value = picked.toLocaleDateString("fr-FR");
-          pickingArrival = false;
+          arrivalInput.value = picked.toLocaleDateString("fr-FR");
+          selectingArrival = false;
         } else {
-          departDate = picked;
-          departEl.value = picked.toLocaleDateString("fr-FR");
-          pickingArrival = true;
+          departureDate = picked;
+          departureInput.value = picked.toLocaleDateString("fr-FR");
+          selectingArrival = true;
           container.classList.add("accueil__calendar--hidden");
         }
         render();
@@ -68,26 +69,28 @@ const isMobile = () => window.innerWidth <= 768;
     }
   }
 
-  arrivalEl.addEventListener("click", e => {
+  /* ---- Ouverture / Fermeture ---- */
+  arrivalInput.addEventListener("click", (e)=>{
     if (isMobile()) return;
     e.stopPropagation();
-    pickingArrival = true;
     container.classList.remove("accueil__calendar--hidden");
+    selectingArrival = true;
     render();
   });
-  departEl.addEventListener("click", e => {
+  departureInput.addEventListener("click", (e)=>{
     if (isMobile()) return;
     e.stopPropagation();
-    pickingArrival = false;
     container.classList.remove("accueil__calendar--hidden");
+    selectingArrival = false;
     render();
   });
 
-  prevBtn.addEventListener("click", e => { e.stopPropagation(); current.setMonth(current.getMonth()-1); render(); });
-  nextBtn.addEventListener("click", e => { e.stopPropagation(); current.setMonth(current.getMonth()+1); render(); });
+  prevBtn.addEventListener("click", (e)=>{ e.stopPropagation(); current.setMonth(current.getMonth()-1); render(); });
+  nextBtn.addEventListener("click", (e)=>{ e.stopPropagation(); current.setMonth(current.getMonth()+1); render(); });
 
-  document.addEventListener("click", e => {
-    if (!container.contains(e.target) && e.target !== arrivalEl && e.target !== departEl) {
+  /* ---- Click en dehors ---- */
+  document.addEventListener("click", (e)=>{
+    if (!container.contains(e.target) && e.target !== arrivalInput && e.target !== departureInput) {
       container.classList.add("accueil__calendar--hidden");
     }
   });
@@ -98,41 +101,42 @@ const isMobile = () => window.innerWidth <= 768;
 /* ========================================================================== */
 /*                     DESKTOP : QUI (VOYAGEURS) DROPDOWN                     */
 /* ========================================================================== */
-(function desktopWho() {
+(function desktopWho(){
   const input = document.getElementById("voyageurs");
   const panel = document.getElementById("who-desktop");
   if (!input || !panel) return;
 
   const counts = { adults:2, children:0, pets:0 };
 
-  function updateLabel() {
+  /* ---- Mise à jour du label ---- */
+  function updateLabel(){
     const total = counts.adults + counts.children;
-    let txt = `${total} voyageur${total>1?"s":""}`;
-    if (counts.pets) txt += `, ${counts.pets} animal${counts.pets>1?"s":""}`;
-    input.value = txt;
+    let label = `${total} voyageur${total>1?'s':''}`;
+    if (counts.pets>0) label += `, ${counts.pets} animal${counts.pets>1?'s':''}`;
+    input.value = label;
   }
   updateLabel();
 
-  input.addEventListener("click", e => {
+  /* ---- Ouverture ---- */
+  input.addEventListener("click",(e)=>{
     if (isMobile()) return;
     e.stopPropagation();
     panel.classList.toggle("accueil__who--hidden");
   });
 
-  panel.querySelectorAll(".accueil__who-row").forEach(row => {
-    const type = row.dataset.type;
-    const countEl = row.querySelector(".accueil__who-count");
-    row.querySelectorAll(".accueil__ctl").forEach(btn => {
-      btn.addEventListener("click", () => {
-        if (btn.classList.contains("-plus")) counts[type]++;
-        else if (counts[type] > 0) counts[type]--;
-        countEl.textContent = counts[type];
-        updateLabel();
-      });
+  /* ---- Boutons +/- ---- */
+  panel.querySelectorAll(".accueil__who-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const type = btn.dataset.type;
+      const action = btn.dataset.action;
+      if (action === "increase") counts[type]++; else if (counts[type]>0) counts[type]--;
+      panel.querySelector(`.accueil__who-count[data-scope="desk"][data-type="${type}"]`).textContent = counts[type];
+      updateLabel();
     });
   });
 
-  document.addEventListener("click", e => {
+  /* ---- Click en dehors ---- */
+  document.addEventListener("click",(e)=>{
     if (!panel.contains(e.target) && e.target !== input) {
       panel.classList.add("accueil__who--hidden");
     }
@@ -142,27 +146,26 @@ const isMobile = () => window.innerWidth <= 768;
 /* ========================================================================== */
 /*                     MOBILE : POPUP PLEIN ÉCRAN                             */
 /* ========================================================================== */
-(function mobilePopup() {
+(function mobilePopup(){
   const popup    = document.getElementById("mobile-popup");
   if (!popup) return;
-
   const openBtn  = document.getElementById("search-btn");
   const closeBtn = document.getElementById("popup-close");
   const clearBtn = document.getElementById("popup-clear");
   const goBtn    = document.getElementById("popup-search");
 
-  // Ouverture / fermeture
-  openBtn.addEventListener("click", () => {
+  /* ---- Ouverture / Fermeture ---- */
+  openBtn.addEventListener("click", ()=>{
     if (!isMobile()) return;
     popup.classList.add("active");
     document.body.style.overflow = "hidden";
   });
-  closeBtn.addEventListener("click", () => {
+  closeBtn.addEventListener("click", ()=>{
     popup.classList.remove("active");
     document.body.style.overflow = "";
   });
 
-  // === Calendrier mobile ===
+  /* ------------------- CALENDRIER MOBILE ------------------- */
   const grid = document.getElementById("m-grid");
   const mEl  = document.getElementById("m-month");
   const yEl  = document.getElementById("m-year");
@@ -170,79 +173,76 @@ const isMobile = () => window.innerWidth <= 768;
   const next = document.getElementById("m-next");
 
   let cur = new Date();
-  let arrival = null, depart = null, pickingArrival = true;
+  let mArrival = null, mDeparture = null, pickArr = true;
 
-  function renderM() {
+  function renderM(){
     grid.innerHTML = "";
     const y = cur.getFullYear(), m = cur.getMonth();
-    mEl.textContent = MONTHS[m];
-    yEl.textContent = y;
+    mEl.textContent = MONTHS[m]; yEl.textContent = y;
 
     const first = (new Date(y,m,1).getDay()+6)%7;
     const last  = new Date(y,m+1,0).getDate();
 
-    for (let i=0; i<first; i++) grid.appendChild(document.createElement("div"));
-    for (let d=1; d<=last; d++) {
+    for(let i=0;i<first;i++) grid.appendChild(document.createElement("div"));
+    for(let d=1; d<=last; d++){
       const cell = document.createElement("div");
       cell.className = "accueil__mday";
       cell.textContent = d;
 
       const sel =
-        (arrival && y===arrival.getFullYear() && m===arrival.getMonth() && d===arrival.getDate()) ||
-        (depart  && y===depart.getFullYear()  && m===depart.getMonth()  && d===depart.getDate());
+        (mArrival && y===mArrival.getFullYear() && m===mArrival.getMonth() && d===mArrival.getDate()) ||
+        (mDeparture && y===mDeparture.getFullYear() && m===mDeparture.getMonth() && d===mDeparture.getDate());
       if (sel) cell.classList.add("accueil__mday--selected");
 
-      cell.addEventListener("click", () => {
+      cell.addEventListener("click", ()=>{
         const picked = new Date(y,m,d);
-        if (pickingArrival) { arrival = picked; pickingArrival = false; }
-        else { depart = picked; pickingArrival = true; }
+        if (pickArr) { mArrival = picked; pickArr = false; }
+        else { mDeparture = picked; pickArr = true; }
         renderM();
       });
 
       grid.appendChild(cell);
     }
   }
-  prev.addEventListener("click", () => { cur.setMonth(cur.getMonth()-1); renderM(); });
-  next.addEventListener("click", () => { cur.setMonth(cur.getMonth()+1); renderM(); });
+
+  prev.addEventListener("click", ()=>{ cur.setMonth(cur.getMonth()-1); renderM(); });
+  next.addEventListener("click", ()=>{ cur.setMonth(cur.getMonth()+1); renderM(); });
   renderM();
 
-  // === Voyageurs mobile ===
+  /* ------------------- COMPTEURS MOBILE (QUI) ------------------- */
   const mCounts = { adults:2, children:0, pets:0 };
-  function updateMCounts() {
-    document.querySelectorAll(".accueil__row").forEach(row => {
-      row.querySelector(".accueil__num").textContent = mCounts[row.dataset.type];
+  function updateMobile(){
+    document.querySelectorAll('.accueil__num[data-scope="mob"]').forEach(el=>{
+      el.textContent = mCounts[el.dataset.type];
     });
   }
-  updateMCounts();
+  updateMobile();
 
-  document.querySelectorAll(".accueil__row").forEach(row => {
-    const type = row.dataset.type;
-    row.querySelectorAll(".accueil__ctl").forEach(btn => {
-      btn.addEventListener("click", () => {
-        if (btn.classList.contains("-plus")) mCounts[type]++;
-        else if (mCounts[type] > 0) mCounts[type]--;
-        updateMCounts();
-      });
+  document.querySelectorAll('.accueil__ctl[data-scope="mob"]').forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const t = btn.dataset.type;
+      if (btn.classList.contains("-plus")) mCounts[t]++; else if (mCounts[t]>0) mCounts[t]--;
+      updateMobile();
     });
   });
 
-  // === Footer actions ===
-  clearBtn.addEventListener("click", () => {
+  /* ------------------- ACTIONS FOOTER ------------------- */
+  clearBtn.addEventListener("click", ()=>{
     document.getElementById("dest-mobile").value = "";
-    Object.assign(mCounts, { adults:2, children:0, pets:0 });
-    arrival = depart = null; pickingArrival = true;
-    updateMCounts(); renderM();
+    mCounts.adults = 2; mCounts.children = 0; mCounts.pets = 0; updateMobile();
+    mArrival = mDeparture = null; pickArr = true; renderM();
   });
 
-  goBtn.addEventListener("click", () => {
+  goBtn.addEventListener("click", ()=>{
     const dest = document.getElementById("dest-mobile").value.trim();
+    console.log({ dest, mArrival, mDeparture, mCounts });
 
     popup.classList.remove("active");
     document.body.style.overflow = "";
 
     // Sync vers desktop
-    if (arrival) document.getElementById("arrival").value = arrival.toLocaleDateString("fr-FR");
-    if (depart)  document.getElementById("departure").value = depart.toLocaleDateString("fr-FR");
+    if (mArrival)   document.getElementById("arrival").value   = mArrival.toLocaleDateString("fr-FR");
+    if (mDeparture) document.getElementById("departure").value = mDeparture.toLocaleDateString("fr-FR");
 
     const total = mCounts.adults + mCounts.children;
     let txt = `${total} voyageur${total>1?"s":""}`;
