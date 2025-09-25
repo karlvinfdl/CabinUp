@@ -18,261 +18,690 @@
   box-sizing: border-box;
 }
 
-body,
-html {
-  height: 100%;
+body {
+  margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
   background: #fff;
   color: #1a1a1a;
   line-height: 1.5;
 }
 
-/* ========================================================================== */
-/*                                NAVBAR                                      */
-/* ========================================================================== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f9f6ef;
-  padding: 0.75rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+h1 {
+  margin: 0;
+  color: #2f4f4f;
 }
 
-.logo {
-  width: 150px;
-  height: auto;
-}
-
-.nav-links {
+/* ========================================================================== */
+/*                        BARRE DE RECHERCHE (DESKTOP)                        */
+/* ========================================================================== */
+.accueil__search {
   display: flex;
   align-items: center;
-  gap: 7rem;
-  margin-right: 7rem;
-  font-size: 1.1rem;
+  background: var(--beige, #f5f5f5);
+  border-radius: 50px;
+  overflow: hidden;
 }
 
-.nav-links a {
-  font-family: 'Epunda Slab', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #1a1a1a;
-  text-decoration: none;
-  transition: color 0.2s, font-weight 0.2s;
-}
-
-.nav-links a:hover {
-  color: #00473e;
-  font-weight: 700;
-}
-
-.nav-toggle {
-  display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #1a1a1a;
-}
-
-/* ========================================================================== */
-/*                           MENU MOBILE FULLSCREEN                           */
-/* ========================================================================== */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* ✅ Correction : barre dans la section catalogue */
+.catalogue .accueil__search {
+  margin: 0 0 20px 0;
+  max-width: 1000px;
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(to bottom, #E8F3F5, #F5F1E6);
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
-  z-index: 2000;
+  align-self: center;
 }
 
-.menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.accueil__seg {
+  flex: 1;
+  padding: 12px 16px;
+  text-align: left;
+  position: relative;
 }
 
-.menu-close {
-  font-size: 2rem;
-  background: none;
-  border: none;
+.accueil__label {
+  font-weight: 600;
+  color: var(--green, #2f4f4f);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.accueil__seg input {
+  border: 0;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
   cursor: pointer;
 }
 
-.menu-links {
+.accueil__cta {
+  background: var(--green, #2f4f4f);
+  color: #fff;
+  border: 2px solid var(--green, #2f4f4f);
+  font-weight: 700;
+  padding: 20px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 6px;
+}
+
+/* ========================================================================== */
+/*                       DROPDOWNS (CALENDRIER & QUI)                         */
+/* ========================================================================== */
+.accueil__calendar,
+.accueil__who {
+  position: absolute;
+  top: calc(80% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 340px;
+  background: #fff;
+  color: #000;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.15);
+}
+
+.accueil__calendar--hidden,
+.accueil__who--hidden {
+  display: none;
+}
+
+.accueil__calendar-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  font-family: 'Epunda Slab', serif;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-.menu-links a {
-  text-decoration: none;
-  font-size: 1.3rem;
-  color: #00473e;
-  font-weight: 500;
-}
-
-.menu-links a:hover {
+.accueil__calendar-title {
+  margin: 0;
   font-weight: 700;
 }
 
-.menu-footer {
-  text-align: center;
-  color: #00473e;
-}
-
-
-
-
-
-
-
-
-
-/* ========================================================================== */
-/*                                FOOTER                                      */
-/* ========================================================================== */
-.footer {
-  background: linear-gradient(to right, #E8F3F5, #F5F1E6);
-  padding: 25px 20px;
-  font-family: Arial, sans-serif;
-  color: #2E5E4E;
-  margin: 30px;
-}
-
-.footer-container {
+.accueil__toggle {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: auto;
+  background: var(--beige, #f0f0f0);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
 }
 
-.footer-left { flex: 1; }
+.accueil__toggle-btn {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #2A4A3F;
+}
 
-.logo-block {
+.accueil__toggle-btn--active {
+  background: #fff;
+  color: var(--green, #2f4f4f);
+}
+
+.accueil__calendar-nav {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 700;
+  margin: 8px 0 10px;
 }
 
-.footer .logo {
-  width: 120px;
-  height: auto;
-  padding: 10px 0;
+.accueil__nav-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--beige, #eee);
+  color: var(--green, #2f4f4f);
+  cursor: pointer;
 }
 
-.socials {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.accueil__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green, #2f4f4f);
+  margin-bottom: 6px;
+}
+
+.accueil__calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
   gap: 6px;
 }
 
-.socials .icons {
+.accueil__day,
+.accueil__mday {
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.accueil__day:hover,
+.accueil__mday:hover {
+  background: var(--beige, #eee);
+}
+
+.accueil__day--selected,
+.accueil__mday--selected {
+  background: var(--green, #2f4f4f);
+  color: #fff;
+  font-weight: 700;
+}
+
+.accueil__who-row,
+.accueil__row {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #efefef;
+}
+
+.accueil__who-row:last-child,
+.accueil__row:last-child {
+  border-bottom: 0;
+}
+
+.accueil__who-label,
+.accueil__row-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #000;
+}
+
+.accueil__who-label small,
+.accueil__row-sub {
+  display: block;
+  font-weight: 400;
+  color: var(--grey, #888);
+  font-size: 12px;
+}
+
+.accueil__who-controls,
+.accueil__row-ctrl {
+  display: flex;
+  align-items: center;
   gap: 12px;
 }
 
-.follow {
-  font-size: 14px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.footer .socials a {
-  font-size: 20px;
-  color: #1c3b2a;
-  transition: 0.3s;
-}
-
-.footer .socials a:hover {
-  color: #2E5E4E;
-}
-
-.footer-right {
-  flex: 2;
-  display: flex;
-  gap: 60px;
-  justify-content: center;
-  text-align: left;
-}
-
-.footer-col h4 {
-  font-size: 16px;
-  margin-bottom: 12px;
-  font-weight: bold;
-}
-
-.footer-col a {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #2E5E4E;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-col a:hover { text-decoration: underline; }
-
-.footer-bottom {
-  margin-top: 30px;
-  border-top: 1.5px solid #2E5E4E;
-  padding-top: 15px;
+.accueil__who-count,
+.accueil__num {
+  min-width: 16px;
   text-align: center;
-  font-size: 14px;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  font-weight: 700;
 }
 
+/* ========================================================================== */
+/*                BOUTONS + / − (COMPTEURS VOYAGEURS)                         */
+/* ========================================================================== */
+.accueil__ctl {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  line-height: 1;
+  user-select: none;
+}
+
+.accueil__ctl.-minus {
+  border: 1px solid #d1d1d1;
+  color: #9a9a9a;
+}
+.accueil__ctl.-minus:hover {
+  background: #f5f5f5;
+}
+
+.accueil__ctl.-plus {
+  border: 1px solid var(--green, #2f4f4f);
+  color: var(--green, #2f4f4f);
+}
+.accueil__ctl.-plus:hover {
+  background: var(--green, #2f4f4f);
+  color: #fff;
+}
 
 /* ========================================================================== */
-/*                                RESPONSIVE                                  */
+/*                       POPUP MOBILE PLEIN ÉCRAN                             */
 /* ========================================================================== */
-/* === Mobile (max-width: 768px) === */
-@media (max-width: 768px) {
-  /* Navbar */
-  .nav-links { display: none; }
-  .nav-toggle { display: block; }
+.accueil__popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 10000;
+  overflow: auto;
+}
+.accueil__popup.active { display: block; }
 
-  /* Footer */
-  .footer-container {
+.accueil__popup-content {
+  padding: 20px 16px 120px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.accueil__popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: 0;
+  font-size: 22px;
+  color: var(--green, #2f4f4f);
+  cursor: pointer;
+}
+
+.accueil__popup-card {
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.12);
+}
+
+.accueil__popup-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* --- Champ Où ? (mobile) --- */
+.accueil__mobile-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green, #2f4f4f);
+  border-radius: 999px;
+  padding: 10px 14px;
+}
+.accueil__mobile-search svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+.accueil__mobile-search input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+}
+.accueil__mobile-search input::placeholder { color: #EAF3EF; }
+
+.accueil__segmented {
+  display: inline-flex;
+  background: #E6F1EC;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+}
+.accueil__segmented-btn {
+  border: 0;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #2A4A3F;
+}
+.accueil__segmented-btn.is-active {
+  background: #fff;
+  color: var(--green, #2f4f4f);
+}
+
+/* --- Calendrier mobile --- */
+.accueil__mcal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.accueil__mcal-title {
+  display: flex;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+}
+.accueil__mnav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--beige, #eee);
+  color: var(--green, #2f4f4f);
+  font-weight: 700;
+  cursor: pointer;
+}
+.accueil__mcal-week {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green, #2f4f4f);
+  margin-bottom: 6px;
+}
+.accueil__mcal-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 6px;
+}
+
+/* --- Footer popup --- */
+.accueil__popup-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #eee;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.accueil__clear {
+  background: transparent;
+  border: 0;
+  color: #000;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.accueil__cta--big {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 16px;
+}
+
+/* ========================================================================== */
+/*                          CATALOGUE & CARDS                                 */
+/* ========================================================================== */
+main {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  height: calc(100vh - 150px);
+}
+
+.catalogue {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  align-items: stretch;
+  background: #ededed;
+  border-radius: 20px 20px 20px 0;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  height: 140px;
+  width: 100%;
+}
+.card img {
+  width: 140px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-right: 1px solid #eee;
+}
+.card-body {
+  padding: 0.8rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+.card p {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  margin-right: 1rem;
+}
+.card.hidden,
+.card.hidden-mobile { display: none !important; }
+
+.available {
+  display: inline-block;
+  margin: 0.3rem 0;
+  padding: 0.2rem 0.6rem;
+  background: #2f6f3f;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  width: fit-content;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1rem;
+  align-self: flex-end;
+}
+
+/* ========================================================================== */
+/*                               PAGINATION                                   */
+/* ========================================================================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.pagination button {
+  border: none;
+  background: #eee;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pagination button.active {
+  background: var(--green, #2f4f4f);
+  color: #fff;
+}
+
+.pagination button:hover {
+  background: #ccc;
+}
+
+/* ========================================================================== */
+/*                                 MAP                                        */
+/* ========================================================================== */
+.map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.map-header {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#map {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+.price-marker {
+  background: #fff;
+  border: 2px solid #2f4f4f;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #2f4f4f;
+  white-space: nowrap;
+}
+
+/* ========================================================================== */
+/*                             RESPONSIVE TABLETTE                            */
+/* ========================================================================== */
+@media (max-width: 1199px) and (min-width: 768px) {
+  main {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    height: auto;
   }
-  .footer-right {
-    flex-direction: column;
-    gap: 25px;
-    align-items: center;
+  .map {
+    order: 1;
+    flex: none;
+    height: 350px;
+    min-height: 350px;
+  }
+  #map { height: 100%; min-height: 350px; }
+  .catalogue {
+    order: 2;
     width: 100%;
-    margin-top: 10px;
   }
-  .footer-col { text-align: center; }
-  .separator {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    justify-items: left;
+  }
+  .card {
+    height: 140px;
+    width: 70%;
+    border-radius: 60px 60px 60px 12px;
+  }
+  .card img { width: 230px; }
+}
+
+/* ========================================================================== */
+/*                             RESPONSIVE MOBILE                              */
+/* ========================================================================== */
+@media (max-width: 767px) {
+  main {
+    flex-direction: column;
+    padding: 0.5rem;
+    height: auto;
+  }
+
+  /* Carte */
+  .map {
+    order: 1;
+    height: 280px;
+    min-height: 280px;
+  }
+  #map { height: 100%; min-height: 280px; }
+
+  /* Catalogue */
+  .catalogue {
+    order: 2;
+    width: 100%;
+  }
+
+  /* Grille logements */
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  /* Card */
+  .card {
+    height: 120px;
+    flex-direction: row;
+    width: 100%;
+  }
+  .card img {
+    width: 120px;
+    height: 100%;
+    border-right: 1px solid #eee;
+  }
+  .card-body { align-items: flex-start; }
+  .price { align-self: flex-start; }
+  .card.hidden-mobile { display: none !important; }
+
+  /* ✅ Barre recherche mobile : cacher champs mais garder bouton */
+  .accueil__search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .catalogue .accueil__search {
+    margin: 0 0 20px 0;
+    max-width: 1000px;
+    width: 40%;
+    align-self: center;
+  }
+
+  .accueil__search .accueil__seg {
+    display: none;
+  }
+
+  .accueil__search #search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--green, #2f4f4f);
+    color: #fff;
     border: none;
-    border-top: 1.5px solid #1c3b2a;
-    width: 80%;
-    margin: 15px auto;
+    border-radius: 50px;
+    padding: 14px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
-  .mobile-only { display: block; }
-  .footer-bottom {
-    margin-top: 10px;
-    border-top: none;
-    padding-top: 0;
+
+  .accueil__search #search-btn::before {
+    content: "🔍";
+    font-size: 18px;
   }
 }
