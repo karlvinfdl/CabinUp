@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+AU+QLD:wght@100..400&family=Playwrite+HU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epunda+Slab:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap');
 
 /* ------------------------------
    Variables globales
@@ -293,6 +293,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
+  margin-top: 14px;
 }
 
 .amen__detail {
@@ -306,7 +307,6 @@ h3 {
   font-weight: 500;
 }
 
-/* Cache le bloc d'équipements supplémentaires */
 .hidden__detail {
   display: none;
 }
@@ -327,8 +327,6 @@ h3 {
 .toggle-btn__detail:hover {
   background: var(--brand-light);
 }
-
-
 
 /* ------------------------------
    Carte
@@ -352,7 +350,6 @@ h3 {
   border-radius: 16px;
 }
 
-
 /* ------------------------------
    Politiques
 --------------------------------*/
@@ -361,6 +358,7 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  align-items: stretch; /* aligne toutes les colonnes sur la même hauteur */
 }
 
 .card__detail {
@@ -368,7 +366,12 @@ h3 {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%; /* force la carte à occuper toute la hauteur de la ligne */
 }
+
 
 ul {
   margin: 10px 0 0 20px;
@@ -381,13 +384,15 @@ li {
 /* ------------------------------
    Responsive
 --------------------------------*/
-@media (max-width: 900px) {
+
+/* Tablette (entre 600px et 900px) */
+@media (max-width: 900px) and (min-width: 601px) {
   .gallery__detail {
     grid-template-columns: 1fr;
   }
 
   .thumbs__detail {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .main__detail {
@@ -403,9 +408,18 @@ li {
   }
 }
 
-@media (max-width: 520px) {
+/* Mobile (≤600px) */
+@media (max-width: 600px) {
+  .gallery__detail {
+    grid-template-columns: 1fr;
+  }
+
   .thumbs__detail {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main__detail {
+    grid-template-columns: 1fr;
   }
 
   .amen-grid__detail {
@@ -413,6 +427,10 @@ li {
   }
 
   .booking__detail {
-  margin-top: 34px;
-}
+    margin-top: 34px;
+  }
+
+  .policy__detail {
+    grid-template-columns: 1fr;
+  }
 }
