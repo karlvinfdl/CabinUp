@@ -1,16 +1,16 @@
 /* ------------------------------
    Reset & Base
 --------------------------------*/
-body {
+.product-page body {
   margin: 0;
-  background: #ffffff; /* fond blanc */
-  color: #1a1a1a; /* texte foncé */
+  background: #ffffff;
+  color: #1a1a1a;
   font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   line-height: 1.6;
   font-size: 16px;
 }
 
-img {
+.product-page img {
   max-width: 100%;
   display: block;
   border: 0;
@@ -19,7 +19,7 @@ img {
 /* ------------------------------
    Layout container
 --------------------------------*/
-.container__detail {
+.product-page .container__detail {
   max-width: 1140px;
   margin: 0 auto;
   padding: 32px 20px 64px;
@@ -28,33 +28,33 @@ img {
 /* ------------------------------
    Titles
 --------------------------------*/
-h1 {
+.product-page h1 {
   font-size: clamp(26px, 3.2vw, 40px);
   margin: 0 0 16px;
   font-weight: 700;
 }
 
-h2 {
+.product-page h2 {
   font-size: clamp(22px, 2.6vw, 28px);
   margin: 28px 0 16px;
   font-weight: 600;
   text-align: center;
-  color: #2E5E4E; /* vert CabinUp */
+  color: #2E5E4E;
 }
 
-h3 {
+.product-page h3 {
   font-size: 20px;
   margin: 18px 0 10px;
   font-weight: 600;
 }
 
-.subtitle__detail {
+.product-page .subtitle__detail {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #2E5E4E; /* vert CabinUp */
+  color: #2E5E4E;
 }
 
-.title-row__detail {
+.product-page .title-row__detail {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -62,23 +62,23 @@ h3 {
   font-family: 'Epunda Slab', serif;
 }
 
-.leaf__detail {
+.product-page .leaf__detail {
   width: 8px;
   height: 28px;
-  background: #8C5E3C; /* marron */
+  background: #8C5E3C;
   border-radius: 4px;
 }
 
 /* ------------------------------
    Gallery
 --------------------------------*/
-.gallery__detail {
+.product-page .gallery__detail {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 16px;
 }
 
-.hero__detail {
+.product-page .hero__detail {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
@@ -86,20 +86,20 @@ h3 {
   aspect-ratio: 16/10;
 }
 
-.hero__detail img {
+.product-page .hero__detail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.view-all__detail {
+.product-page .view-all__detail {
   position: absolute;
   left: 16px;
   bottom: 16px;
   padding: 10px 16px;
   border-radius: 999px;
   border: none;
-  background: #2E5E4E;
+  background: var(--green);
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -107,59 +107,59 @@ h3 {
   transition: all 0.25s ease;
 }
 
-.view-all__detail:hover {
-  background: #1e7a61;
+.product-page .view-all__detail:hover {
+  background: #2E5E4E;
 }
 
-.thumbs__detail {
+.product-page .thumbs__detail {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: 1fr;
   gap: 12px;
 }
 
-.thumb__detail {
+.product-page .thumb__detail {
   border-radius: 12px;
   overflow: hidden;
   background: #e5e5e5;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.thumb__detail img {
+.product-page .thumb__detail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s;
 }
 
-.thumb__detail:hover img {
+.product-page .thumb__detail:hover img {
   transform: scale(1.05);
 }
 
 /* ------------------------------
    Main layout
 --------------------------------*/
-.main__detail {
+.product-page .main__detail {
   display: grid;
   grid-template-columns: 1.2fr 0.9fr;
   gap: 28px;
   margin-top: 32px;
 }
 
-.listing-title__detail {
+.product-page .listing-title__detail {
   margin-top: 0;
 }
 
-.meta__detail {
+.product-page .meta__detail {
   display: flex;
   gap: 14px;
   align-items: center;
-  color: #555; /* gris plus lisible */
+  color: #555;
   font-weight: 500;
   margin-bottom: 20px;
 }
 
-.meta__detail .dot__detail {
+.product-page .meta__detail .dot__detail {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -169,26 +169,26 @@ h3 {
 /* ------------------------------
    Description
 --------------------------------*/
-.desc__detail {
+.product-page .desc__detail {
   background: #ffffff;
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.desc__detail p {
+.product-page .desc__detail p {
   margin: 0 0 12px;
   color: #1a1a1a;
 }
 
-.desc__detail small {
-  color: #6c7c75;
+.product-page .desc__detail small {
+  color: #2E5E4E;
 }
 
 /* ------------------------------
    Booking card
 --------------------------------*/
-.booking__detail {
+.product-page .booking__detail {
   background: #ffffff;
   border-radius: 16px;
   padding: 22px;
@@ -198,29 +198,29 @@ h3 {
   top: 16px;
 }
 
-.price__detail {
+.product-page .price__detail {
   font-weight: 800;
   font-size: 22px;
   margin-bottom: 16px;
 }
 
-.field__detail {
+.product-page .field__detail {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #ffffff; /* blanc pour contraste */
+  background: #f4f4f4;
   padding: 10px 12px;
   border-radius: 12px;
   margin: 12px 0;
 }
 
-.field__detail label {
+.product-page .field__detail label {
   font-weight: 600;
-  color: #6c7c75;
+  color: #2E5E4E;
   width: 86px;
 }
 
-.field__detail input {
+.product-page .field__detail input {
   border: 0;
   background: transparent;
   padding: 6px 4px;
@@ -229,12 +229,12 @@ h3 {
   width: 100%;
 }
 
-.muted__detail {
-  color: #6c7c75;
+.product-page .muted__detail {
+  color: #2E5E4E;
   font-size: 14px;
 }
 
-.cta__detail {
+.product-page .cta__detail {
   display: block;
   width: 100%;
   margin-top: 14px;
@@ -249,34 +249,34 @@ h3 {
   opacity: 0.9;
 }
 
-.cta__detail:hover {
+.product-page .cta__detail:hover {
   opacity: 1;
-  background: #1e7a61;
+  background: #2E5E4E;
 }
 
-.hint__detail {
+.product-page .hint__detail {
   font-size: 12px;
-  color: #6c7c75;
+  color: #2E5E4E;
   margin-top: 6px;
 }
 
 /* ------------------------------
    Équipements
 --------------------------------*/
-.amenities__detail {
+.product-page .amenities__detail {
   margin-top: 28px;
 }
 
-.amen-grid__detail {
+.product-page .amen-grid__detail {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
   margin-top: 14px;
 }
 
-.amen__detail {
+.product-page .amen__detail {
   background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border-radius: 14px;
   padding: 14px;
   display: flex;
@@ -285,11 +285,11 @@ h3 {
   font-weight: 500;
 }
 
-.hidden__detail {
+.product-page .hidden__detail {
   display: none;
 }
 
-.toggle-btn__detail {
+.product-page .toggle-btn__detail {
   margin: 16px auto 0;
   display: block;
   padding: 10px 18px;
@@ -302,27 +302,27 @@ h3 {
   transition: all 0.25s ease;
 }
 
-.toggle-btn__detail:hover {
-  background: #1e7a61;
+.product-page .toggle-btn__detail:hover {
+  background: #2E5E4E;
 }
 
 /* ------------------------------
    Carte
 --------------------------------*/
-.map-card__detail {
-  margin-top: 34px;
+.product-page .map-card__detail {
+  margin-top: 54px;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   overflow: hidden;
 }
 
-.map-card__detail h2 {
+.product-page .map-card__detail h2 {
   padding: 16px 16px 0;
   margin: 0;
 }
 
-#map {
+.product-page #map {
   width: 100%;
   height: 350px;
   border-radius: 16px;
@@ -331,7 +331,7 @@ h3 {
 /* ------------------------------
    Politiques
 --------------------------------*/
-.policy__detail {
+.product-page .policy__detail {
   margin-top: 34px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -339,10 +339,10 @@ h3 {
   align-items: stretch;
 }
 
-.card__detail {
+.product-page .card__detail {
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -350,11 +350,11 @@ h3 {
   height: 100%;
 }
 
-ul {
+.product-page ul {
   margin: 10px 0 0 20px;
 }
 
-li {
+.product-page li {
   margin: 6px 0;
 }
 
@@ -362,40 +362,18 @@ li {
    Responsive
 --------------------------------*/
 @media (max-width: 900px) and (min-width: 601px) {
-  .gallery__detail {
-    grid-template-columns: 1fr;
-  }
-  .thumbs__detail {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .main__detail {
-    grid-template-columns: 1fr;
-  }
-  .amen-grid__detail {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .policy__detail {
-    grid-template-columns: 1fr;
-  }
+  .product-page .gallery__detail { grid-template-columns: 1fr; }
+  .product-page .thumbs__detail { grid-template-columns: repeat(3, 1fr); }
+  .product-page .main__detail { grid-template-columns: 1fr; }
+  .product-page .amen-grid__detail { grid-template-columns: repeat(2, 1fr); }
+  .product-page .policy__detail { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
-  .gallery__detail {
-    grid-template-columns: 1fr;
-  }
-  .thumbs__detail {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .main__detail {
-    grid-template-columns: 1fr;
-  }
-  .amen-grid__detail {
-    grid-template-columns: 1fr;
-  }
-  .booking__detail {
-    margin-top: 34px;
-  }
-  .policy__detail {
-    grid-template-columns: 1fr;
-  }
+  .product-page .gallery__detail { grid-template-columns: 1fr; }
+  .product-page .thumbs__detail { grid-template-columns: repeat(2, 1fr); }
+  .product-page .main__detail { grid-template-columns: 1fr; }
+  .product-page .amen-grid__detail { grid-template-columns: 1fr; }
+  .product-page .booking__detail { margin-top: 34px; }
+  .product-page .policy__detail { grid-template-columns: 1fr; }
 }
