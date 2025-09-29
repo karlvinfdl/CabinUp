@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CabinUp Détails-Produit</title>
+  <link rel="stylesheet" href="/assets/css/produit.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body class="product-page">
+  <main class="container__detail">
+
+    <!-- En-tête section -->
+    <div class="title-row__detail" aria-hidden="true">
+      <div class="leaf__detail"></div>
+      <div class="subtitle__detail">Détails–Produits</div>
+    </div>
+
+    <!-- Galerie -->
+    <section class="gallery__detail" aria-label="Galerie de photos du logement">
+      <div class="hero__detail">
+        <img src="/assets/images/foret/cabane1.avif" alt="Photo principale de la chambre" />
+        <button class="view-all__detail" type="button">Voir toutes les photos</button>
+      </div>
+
+      <div class="thumbs__detail">
+        <div class="thumb__detail"><img src="/assets/images/foret/cabane2.avif" alt="Cuisine moderne" /></div>
+        <div class="thumb__detail"><img src="/assets/images/foret/cabane3.avif" alt="Salon cosy" /></div>
+        <div class="thumb__detail"><img src="/assets/images/foret/cabane4.avif" alt="Salle de bain" /></div>
+        <div class="thumb__detail"><img src="/assets/images/foret/cabane5.avif" alt="Coin lecture" /></div>
+      </div>
+    </section>
+
+    <!-- Contenu principal + réservation -->
+    <section class="main__detail">
+
+      <!-- Colonne gauche -->
+      <div>
+        <h1 class="listing-title__detail">Rhoncus suspendisse</h1>
+        <div class="meta__detail">
+          <span>Lyon</span>
+          <span class="dot__detail"></span>
+          <span>2 chambres</span>
+          <span class="dot__detail"></span>
+          <span>2 bain</span>
+        </div>
+
+        <article class="desc__detail">
+          <h3>Description</h3>
+          <p>
+            Blottie au cœur d’une forêt verdoyante, cette cabane perchée vous offre une expérience inoubliable.
+            Conçue en bois local, elle allie confort moderne et authenticité.
+          </p>
+          <p>
+            Profitez d’une terrasse suspendue pour admirer les couchers de soleil et vous reconnecter à la nature.
+          </p>
+          <small>A remplir</small>
+        </article>
+
+        <!-- Équipements -->
+        <section class="amenities__detail">
+          <h2>Équipements</h2>
+
+          <!-- Premier équipement visible -->
+          <div class="amen-grid__detail">
+            <div class="amen__detail"><i class="fa-solid fa-tv"></i><span>TV écran plat</span></div>
+          </div>
+
+          <!-- Équipements supplémentaires -->
+          <div class="amen-grid__detail hidden__detail" id="moreAmenities">
+            <div class="amen__detail"><i class="fa-solid fa-phone"></i><span>Téléphone</span></div>
+            <div class="amen__detail"><i class="fa-solid fa-laptop"></i><span>Bureau de travail</span></div>
+            <div class="amen__detail"><i class="fa-solid fa-snowflake"></i><span>Réfrigérateur</span></div>
+            <div class="amen__detail"><i class="fa-solid fa-mug-hot"></i><span>Machine à café</span></div>
+            <div class="amen__detail"><i class="fa-solid fa-utensils"></i><span>Plats / Couverts</span></div>
+            <div class="amen__detail"><i class="fa-solid fa-fan"></i><span>Séchoir</span></div>
+            <div class="amen__detail"><i class="fa-solid fa-box-archive"></i><span>Garde-robe</span></div>
+          </div>
+
+          <!-- Bouton dropdown -->
+          <button class="toggle-btn__detail" id="toggleAmenities">Voir plus</button>
+        </section>
+
+        <!-- Section politiques -->
+<section>
+  <h2>Détails / politique</h2>
+  <div class="policy__detail">
+    <div class="card__detail">
+      <h3>Règlement intérieur</h3>
+      <ul>
+        <li>Check-in flexible</li>
+        <li>Checkout 11:00</li>
+        <li>Interdit de fumer</li>
+        <li>Animaux acceptés</li>
+        <li>Pas de fêtes et évènements</li>
+      </ul>
+    </div>
+
+    <div class="card__detail">
+      <h3>Conditions d’annulation</h3>
+      <ul>
+        <li>Annulation gratuite jusqu’à 24h avant l’arrivée.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+      </div> <!-- ✅ fermeture colonne gauche -->
+
+      <!-- Colonne droite (booking) -->
+      <aside class="booking__detail" aria-label="Réservation">
+        <div class="price__detail">399€ <span class="muted__detail">/ nuit</span></div>
+
+        <div class="field__detail">
+          <label for="arrivee">Arrivé</label>
+          <input id="arrivee" type="date" />
+        </div>
+        <div class="field__detail">
+          <label for="depart">Départ</label>
+          <input id="depart" type="date" />
+        </div>
+
+        <div class="field__detail">
+          <label for="guests">Invités</label>
+          <input id="guests" type="number" min="1" max="10" value="1" />
+        </div>
+
+        <p class="muted__detail">Tous les services inclus</p>
+        <button class="cta__detail" type="button" disabled>Continuer la réservation</button>
+        <p class="hint__detail">TEXTE.</p>
+      </aside>
+    </section>
+
+    <!-- Carte -->
+    <section class="map-card__detail">
+      <h2>Emplacement</h2>
+      <div id="map"></div>
+    </section>
+
+  </main>
+
+ <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="/assets/script/script.js"></script>
+</body>
+</html>
